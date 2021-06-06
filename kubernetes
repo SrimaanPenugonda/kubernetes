@@ -76,5 +76,14 @@ select the container
 env- display all env variables
 env file - configmaps
 03-configmaps.yml
+    careful about casesensitive.. apiVersion
+    Pod should be like this
+secret-
+kind: Secret
+data:
+ URL: "" // give base64 format
+
+-secretRef:
+    name:
 
 
