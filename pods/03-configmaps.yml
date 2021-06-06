@@ -20,6 +20,6 @@ spec:
       command: ["sleep","20"]
       envFrom:
         - configMapRef:
-            name: sample
+            name: sample3
 
 
