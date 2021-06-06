@@ -18,7 +18,7 @@ spec:
     - name: centos
       image: centos:7
       command: ["sleep","20"]
-      envfrom:
+      envFrom:
         - configMapRef:
             name: sample
 
