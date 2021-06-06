@@ -1,5 +1,5 @@
 ---
-apiversion: v1
+apiVersion: v1
 kind: ConfigMap
 metadata: #name of the configmap
   name: sample3
@@ -9,7 +9,7 @@ data:
   TYPE: onlineclass
 
 ---
-apiversion: v1
+apiVersion: v1
 kind: pod
 metadata:
   name: sample3
