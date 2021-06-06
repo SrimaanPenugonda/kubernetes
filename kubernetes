@@ -41,8 +41,40 @@ containers in POD will use same network stack
 create pod:
 kubectl run sample --image=nginx (imperative cmd)
 we always prefer declarative method so yaml file
+apiversion: v1
+kind: pod
+metadata:
+  name: sample1
+spec:  -- up ti this 4 will be common for all pods
+  containers:
+    - name: nginx
+      image: nginx
 
+now execute this ..kubectl apply -f 01-pod.yml
+kubectl get pods
+display both sample and sample1
+metadata:
+  name: sample2
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+    - name: centos
+      image: centos:7
+      command: ["sleep","20"]
 
-
+sample2 pod will have 2 containers
+pass the config to POD
+    -using env variables
+    env:
+    - name: URL
+      value: google.com
+k9s: Kubernetes CLI To Manage Your Clusters In Style
+ctrl+k will kill the pod
+s- will into the pod
+select the container
+env- display all env variables
+env file - configmaps
+03-configmaps.yml
 
 

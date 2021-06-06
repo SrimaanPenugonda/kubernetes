@@ -1,0 +1,14 @@
+apiversion: v1
+kind: pod
+metadata: #name of the pod
+  name: sample2
+spec:
+  containers: #two containers
+    - name: nginx
+      image: nginx
+    - name: centos
+      image: centos:7
+      command: ["sleep","20"]
+      env:  #env variables
+        - name: ULR
+          value: google.com
