@@ -10,7 +10,7 @@ data:
 
 ---
 apiVersion: v1
-kind: pod
+kind: Pod
 metadata:
   name: sample3
 spec:
