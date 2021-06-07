@@ -186,6 +186,9 @@ labels has to be there
 we need to modify the existing pod, pod refresh.. like instance refresh in asg
 this can be handle by Deployment
 kubectl get rs - pull the replicaSets
+NAME    DESIRED   CURRENT   READY   AGE
+nginx   2         2         2       98s
+if any f the pod killed immediate another one launches
 
 Deployment:
 kind: Deployment - only change
