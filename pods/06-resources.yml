@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resources-test
+spec:
+  containers:
+    - name: centos
+      image: centos:7
+      command: [ "sleep", "10000" ]
+      resources:
+        requests:
+          cpu: 250m
+          memory: 128Mi
+        limits:
+          cpu: 500m
+          memory: 256Mi

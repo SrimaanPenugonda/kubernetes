@@ -87,6 +87,17 @@ data:
     name:
 
 Health Checks:
-
-
-
+    - name: health
+      image: srimaanaws2021/healthcheck
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /opt/file.txt
+        initialDelaySeconds: 5
+        periodSeconds: 5
+s64:
+RESOURCES:
+resources support min and max which is called requests and limits
+requests - where min will be specified
+limits - where max values specified
