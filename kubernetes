@@ -195,6 +195,7 @@ kind: Deployment - only change
 now if we change the container spec.. automatically new pod will create with new
 spec and exiting one will terminate
 
-STATEFUL set:
+services in kubernetes :
+
 
 
