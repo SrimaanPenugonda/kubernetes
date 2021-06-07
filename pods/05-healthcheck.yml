@@ -1,0 +1,15 @@
+apiVesrion: v1
+kind: Pod
+metadata:
+  name: healtcheck
+spec:
+  containers:
+    - name: health
+      image: srimaanaws2021/healthcheck
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /opt/file.txt
+        initialDelaySeconds: 5
+        periodSeconds: 5
