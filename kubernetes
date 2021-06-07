@@ -195,7 +195,23 @@ kind: Deployment - only change
 now if we change the container spec.. automatically new pod will create with new
 spec and exiting one will terminate
 
-services in kubernetes :
+kubectl scale deploy nginx --replicas=2 -
+we can scale this deployment set using this cmd
 
+services in kubernetes :
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector:
+    tier: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+loadbalacer:
+type: LoadBalancer
 
 
