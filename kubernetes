@@ -76,7 +76,7 @@ select the container
 env- display all env variables
 env file - configmaps
 03-configmaps.yml
-    careful about casesensitive.. apiVersion
+    careful about case sensitive.. apiVersion
     Pod should be like this
 secret-
 kind: Secret
@@ -102,7 +102,7 @@ resources support min and max which is called requests and limits
 requests - where min will be specified
 limits - where max values specified
 
-
+PVC: persistent volume claim:
 Containers are Ephemeral
 we need to deal with storing the data from container and we should not be lost even if pod/container
 is terminated
