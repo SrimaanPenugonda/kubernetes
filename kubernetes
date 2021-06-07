@@ -109,6 +109,7 @@ is terminated
 can be achieved by attaching storage
 Storage can be deal in kubernetes by PersistentVolume (-v path in docker)
 PersistentVolume claim/storage class
+PV - large unit provided by administrators
 
 kind: PersistentVolumeClaim
 metadata:
