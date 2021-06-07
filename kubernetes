@@ -101,3 +101,96 @@ RESOURCES:
 resources support min and max which is called requests and limits
 requests - where min will be specified
 limits - where max values specified
+
+
+Containers are Ephemeral
+we need to deal with storing the data from container and we should not be lost even if pod/container
+is terminated
+can be achieved by attaching storage
+Storage can be deal in kubernetes by PersistentVolume (-v path in docker)
+PersistentVolume claim/storage class
+
+kind: PersistentVolumeClaim
+metadata:
+    name: mysql
+spec:
+acessmodes: Readwriteonce
+kubectl get storageclass - get the storage class name - gp2
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: gp2
+
+kubectl apply -f 07-pvc.yml
+pvc has reserved
+
+pvc has to mount to a pod
+add pod now
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+spec:
+  containers:
+    - name: mysql
+      image: mysql
+      env:
+        - name: MYSQL_ROOT_PWD
+          value: root123
+      volumeMounts:
+      - mountPath: "/var/lib/mysql"
+        name: mypd
+  volumes:
+    - name: mysql
+      persistentVolumeClaim:
+        claimName: mysql   #pvc name
+this pod is created with pvc mysql
+if we kill the pod and attached this pvc to another new pod  data will be persitant
+
+Sets in PODS:
+we don't configure pods directly in kubernetes bz it cant be scalable
+kubernetes offers sets
+ReplicaSet,statefulSet,DaemonSet
+Enhancing to ReplicaSet Deployment
+
+ReplicaSet:
+kind: ReplicaSet
+metadata:
+  name: nginx
+  labels:
+    tier: nginx
+labels has to be there
+  replicas: 1 it will launch number of pods
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        tier: nginx
+    template:
+      metadata:
+        labels:
+          tier: nginx  -- this is the spec for replica
+  spec:
+        containers:
+          - name: nginx
+            image: nginx:1.16 - this is spec for container
+     if we change the container spec.. and run this set
+     existing pod wont modify
+we need to modify the existing pod, pod refresh.. like instance refresh in asg
+this can be handle by Deployment
+kubectl get rs - pull the replicaSets
+
+Deployment:
+kind: Deployment - only change
+now if we change the container spec.. automatically new pod will create with new
+spec and exiting one will terminate
+
+STATEFUL set:
+
+
