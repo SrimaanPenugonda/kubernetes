@@ -9,11 +9,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      tier: nginx
+      tier: nginx1
   template:
     metadata:
       labels:
-        tier: nginx #spec for replicaset
+        tier: nginx1 #spec for replicaset
     spec:
       containers:
         - name: nginx
