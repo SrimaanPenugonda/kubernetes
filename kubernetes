@@ -214,4 +214,52 @@ spec:
 loadbalacer:
 type: LoadBalancer
 
+S65:
+Helm Charts are simply Kubernetes YAML manifests combined into a single package that can be advertised to your Kubernetes clusters.
+Improves productivity
+Reduces the complexity of deployments of microservices
+Enables the adaptation of cloud native applications
+
+mysql 5.7 kubernetes helmchart
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install mysql bitnami/mysql --set image.tag=5.7.26
+svc attached
+:svc inn k9s go to svc's
+mysql-headless is the svc service
+
+kubectl get secrets
+kubectl get secrets mysql -o yaml
+mysql-root-password -
+echo pwd |base64 --decode ;echo
+
+helm repo add stable https://charts.helm.sh/stable
+helm install mysql  stable/mysql
+kubectl get secret --namespace default mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode;echo
+
+mongodb helm chart:
+helm install mongodb bitnami/mongodb --set auth.enabled=false
+--install mongo without auth
+
+rabbitmq helm chart:
+helm install rabbitmq bitnami/rabbitmq
+shell -
+# rabbitmqctl add_user roboshop roboshop123
+# rabbitmqctl set_user_tags roboshop administrator
+# rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+
+redis helm chart:
+helm install redis bitnami/redis --set tls.authClients=false
+
+kubectl run debug --image=centos:7 -- sleep 10000
+install client
+shell
+yum install mysql -y
+mysql -h mysql -u root -ppwd
+download the db and load the schema for both mongodb and mysql
+
+
+
+
+
+
 
