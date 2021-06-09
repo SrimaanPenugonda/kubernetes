@@ -235,7 +235,7 @@ echo pwd |base64 --decode ;echo
 helm repo add stable https://charts.helm.sh/stable
 helm install mysql  stable/mysql
 kubectl get secret --namespace default mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode;echo
-aGgjofEuXk
+tlFzPuc4a2
 mongodb helm chart:
 helm install mongodb bitnami/mongodb --set auth.enabled=false
 --install mongo without auth
@@ -268,7 +268,23 @@ helm delete mongodb
 eksctl create cluster --name ekstest --region us-east-1 --managed
 it will create a VPC and cloudformation stack as well
 
+Install Prometheus :
+helm install prometheus prometheus-community/kube-prometheus-stack
+and in Grafana svc change it to LoadBalancer
 
+go to DNS name of load balancer
+
+username/pwd
+kubectl get secrets
+on k9s :secrets
+:pods - show pods
+:svc - show services:
+:deployment - show deployments
+:secrets : show secrets
+go to grafana and view yaml file by pressing y
+
+echo cHJvbS1vcGVyYXRvcg== |base64 --decode;echo
+prom-operator
 
 
 
