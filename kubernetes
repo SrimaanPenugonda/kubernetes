@@ -250,6 +250,8 @@ shell -
 redis helm chart:
 helm install redis bitnami/redis --set tls.authClients=false
 
+helm install redis stable/redis --set usePassword=false - prefer this
+
 kubectl run debug --image=centos:7 -- sleep 10000
 install client
 shell
