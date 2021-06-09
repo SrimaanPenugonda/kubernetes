@@ -235,7 +235,7 @@ echo pwd |base64 --decode ;echo
 helm repo add stable https://charts.helm.sh/stable
 helm install mysql  stable/mysql
 kubectl get secret --namespace default mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode;echo
-9eiypTELpk
+aGgjofEuXk
 mongodb helm chart:
 helm install mongodb bitnami/mongodb --set auth.enabled=false
 --install mongo without auth
@@ -259,6 +259,9 @@ download the db and load the schema for both mongodb and mysql
 mongo --host mongodbt <users.js - give hostname which we crated above
 
 RELEASE_ARTIFACTS_APP_BUILDID- where our dockerhub repo number will be there
+
+helm ls
+helm delete mongodb
 
 
 
