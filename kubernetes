@@ -265,6 +265,10 @@ RELEASE_ARTIFACTS_APP_BUILDID- where our dockerhub repo number will be there
 helm ls
 helm delete mongodb
 
+eksctl create cluster --name ekstest --region us-east-1 --managed
+it will create a VPC and cloudformation stack as well
+
+
 
 
 
