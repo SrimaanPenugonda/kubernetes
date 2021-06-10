@@ -288,6 +288,32 @@ echo cHJvbS1vcGVyYXRvcg== |base64 --decode;echo
 prom-operator
 
 prometheus also load balancer:
+kubectl get ns - to get namespaces- namespaces to isolate the resources
+rate(containers_cpu_system_seconds_total{namespace="default",pod=~"shipping.*",image=~"srimaanaws2021.*"}[5m])
+~ is like
+sun by (pod)(rate(container_cpu_system_seconds_total{namespace="default",pod=~"shipping.*"|~"payment.*",
+image=~"srimaanaws2021.*"}[5m]))
+
+S68:
+ELK - Kibana
+filebeat collect logs
+
+add helm repo elastic
+helm install filebeat elastic/filebeat
+filebeat is daemon set - pods will create as number of nodes
+:configmap
+go to filebeat - we can see output sending to elasticsearch..
+output.elasticsearch -
+hosts
+change it to
+output.logstash
+hosts:'ELKip:5044'
+telnet elkip 5044.. to check the connection
+got ELK box:
+cd /etc/logstash/conf.d -
+
+
+
 
 
 
