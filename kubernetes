@@ -313,6 +313,7 @@ got ELK box:
 cd /etc/logstash/conf.d -
 
   index => "%{[kubernetes][container][name]}-%{+yyyy.MM.dd}" -update this in logstash.conf file
+  update [fields][app] with above at all places
 
 
 
