@@ -235,7 +235,7 @@ echo pwd |base64 --decode ;echo
 helm repo add stable https://charts.helm.sh/stable
 helm install mysql  stable/mysql
 kubectl get secret --namespace default mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode;echo
-tlFzPuc4a2
+2Ruio0IcUx
 mongodb helm chart:
 helm install mongodb bitnami/mongodb --set auth.enabled=false
 --install mongo without auth
@@ -312,8 +312,7 @@ telnet elkip 5044.. to check the connection
 got ELK box:
 cd /etc/logstash/conf.d -
 
-
-
+  index => "%{[kubernetes][container][name]}-%{+yyyy.MM.dd}" -update this in logstash.conf file
 
 
 
