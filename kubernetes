@@ -268,6 +268,7 @@ helm delete mongodb
 eksctl create cluster --name ekstest --region us-east-1 --managed
 it will create a VPC and cloudformation stack as well
 
+S67:
 Install Prometheus :
 helm install prometheus prometheus-community/kube-prometheus-stack
 and in Grafana svc change it to LoadBalancer
@@ -286,6 +287,7 @@ go to grafana and view yaml file by pressing y
 echo cHJvbS1vcGVyYXRvcg== |base64 --decode;echo
 prom-operator
 
+prometheus also load balancer:
 
 
 
