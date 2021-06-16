@@ -235,7 +235,7 @@ echo pwd |base64 --decode ;echo
 helm repo add stable https://charts.helm.sh/stable
 helm install mysql  stable/mysql
 kubectl get secret --namespace default mysql -o jsonpath="{.data.mysql-root-password}" | base64 --decode;echo
-2Ruio0IcUx
+MfWgOqPV9D
 mongodb helm chart:
 helm install mongodb bitnami/mongodb --set auth.enabled=false
 --install mongo without auth
@@ -303,6 +303,12 @@ helm install filebeat elastic/filebeat
 filebeat is daemon set - pods will create as number of nodes
 :configmap
 go to filebeat - we can see output sending to elasticsearch..
+
+    filebeat.inputs:
+    - type: container
+      paths:
+        - /var/log/containers/*.log
+
 output.elasticsearch -
 hosts
 change it to
@@ -311,9 +317,16 @@ hosts:'ELKip:5044'
 telnet elkip 5044.. to check the connection
 got ELK box:
 cd /etc/logstash/conf.d -
+index => "%{[kubernetes][container][name]}-%{+yyyy.MM.dd}" -update this in logstash.conf file
+update [fields][app] with above at all places
+metadata:
+  annotations:
+        co.elastic.logs/enabled: "true"
+        co.elastic.logs/json.keys_under_root: "true" --update the deployment.ym file for all servers
 
-  index => "%{[kubernetes][container][name]}-%{+yyyy.MM.dd}" -update this in logstash.conf file
-  update [fields][app] with above at all places
+    for shipping:
+     co.elastic.logs/1.include_lines: '.*c.instana.robotshop.shipping.Controller.*'
+        this will include selected lines only
 
 
 
