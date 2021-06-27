@@ -1,9 +1,30 @@
 S63:
-eksctl - eks cluster by amazon
+eksctl - eks cluster by amazon which  manags the compute nodes
 kubectl - kubernetes cluster
 kubectl – A command line tool for working with Kubernetes clusters.
 eksctl – A command line tool for working with EKS clusters that automates many individual tasks.
 
+to create a cluster cluster.yml file with two nodes:
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: basic-cluster
+  region: eu-north-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: m5.large
+    desiredCapacity: 10
+    volumeSize: 80
+    ssh:
+      allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
+  - name: ng-2
+    instanceType: m5.xlarge
+    desiredCapacity: 2
+    volumeSize: 100
+    ssh:
+      publicKeyPath: ~/.ssh/ec2_id_rsa.pub
 Who is orchestrator :
 
 WHY Kubernetes? Google product
