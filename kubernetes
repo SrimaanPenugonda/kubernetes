@@ -232,7 +232,7 @@ spec:
       port: 80
       targetPort: 80
 
-loadbalacer:
+load balancer:
 type: LoadBalancer
 
 S65:
