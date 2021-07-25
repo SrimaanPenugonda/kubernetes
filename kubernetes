@@ -7,7 +7,6 @@ eksctl – A command line tool for working with EKS clusters that automates many
 to create a cluster cluster.yml file with two nodes:
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
-
 metadata:
   name: basic-cluster
   region: eu-north-1
@@ -38,21 +37,20 @@ cloudWatch:
   clusterLogging:
     enableTypes: ["*"]
 
+cluster with cloudwatch :
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
-
 metadata:
   name: cluster-11
   region: eu-west-2
-
 nodeGroups:
   - name: ng-1
     instanceType: m5.large
     desiredCapacity: 1
-
 cloudWatch:
   clusterLogging:
     enableTypes: ["audit", "authenticator"]
+
 Who is orchestrator :
 
 WHY Kubernetes? Google product
@@ -72,13 +70,16 @@ API Server: The API server acts as an entry point for all the REST commands used
 Etcd: etcd components, store configuration detail, and wright values. It communicates with the most component to receive commands and work. It also manages network rules and port forwarding activity.
 Scheduler: The scheduler schedules the tasks to the slave node. It stores the resource usage information for every slave node. It is responsible for distributing the workload.
 Kubelet: It gets the configuration of a Pod from the API server and ensures that the described containers are up and running.
+
+
 Pods: A pod is a combination of single or multiple containers that logically run together on nodes.
 
-kubectl cluster-info
-kubectl get nodes
-kubectl get nodes -o wide
-kubectl api-versions
-cat .kube/config
+kubectl cluster-info  - gives u endpoint of cluster
+kubectl get nodes -
+kubectl get nodes -o wide - give more info like (ip adress os-image)
+kubectl api-versions - (list all apis and versions)
+kubectl api-resources -(list all resources - pods etc)
+cat .kube/config -
 kubernetes uses authorization than authentication - with some key
 
 POD - Kubernetes deals with POD -
@@ -113,7 +114,9 @@ spec:
       command: ["sleep","20"]
 
 sample2 pod will have 2 containers
-pass the config to POD
+kubectl exec -it sample2 -c centos -- bash (sample2 have 2 containers so mentions container name(-c))
+
+- pass the config to POD
     -using env variables
     env:
     - name: URL
